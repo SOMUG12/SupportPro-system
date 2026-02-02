@@ -1,6 +1,5 @@
 # SupportPro - Enterprise Ticket Management System
 
-## 🎓 Final Year Computer Science Project
 
 ### Overview
 SupportPro is a modern, enterprise-grade customer support management system built with React.js. This project demonstrates advanced web development concepts, state management, and professional UI/UX design.
