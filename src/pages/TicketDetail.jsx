@@ -22,7 +22,6 @@ const TicketDetail = () => {
 
   useEffect(() => {
     if (isCreateMode) {
-      // Initialize with empty form for new ticket
       setFormData({
         title: '',
         customer: '',
@@ -34,7 +33,6 @@ const TicketDetail = () => {
       });
       setIsLoading(false);
     } else {
-      // Load existing ticket
       setIsLoading(true);
       const foundTicket = tickets.find(t => t.id === id);
       if (foundTicket) {
@@ -68,7 +66,6 @@ const TicketDetail = () => {
     setIsLoading(true);
 
     if (isCreateMode) {
-      // Create new ticket
       const newTicket = {
         ...formData,
         agent: user?.name || 'Unassigned',
@@ -80,7 +77,6 @@ const TicketDetail = () => {
       setIsLoading(false);
       navigate(`/tickets/${createdTicket.id}`);
     } else {
-      // Update existing ticket
       updateTicket(id, formData);
       setIsLoading(false);
       navigate('/tickets');
@@ -108,7 +104,6 @@ const TicketDetail = () => {
 
   return (
     <div className="ticket-detail-container">
-      {/* Sidebar */}
       <div className="sidebar">
         <div className="sidebar-header">
           <div className="logo">
@@ -144,7 +139,6 @@ const TicketDetail = () => {
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="main-content">
         <div className="ticket-header">
           <div className="header-left">
@@ -322,7 +316,6 @@ const Styles = () => {
         background: #f8fafc;
       }
 
-      /* Sidebar */
       .sidebar {
         width: 250px;
         background: white;
@@ -413,7 +406,6 @@ const Styles = () => {
         background: #e5e7eb;
       }
 
-      /* Main Content */
       .main-content {
         flex: 1;
         padding: 2rem;
@@ -447,238 +439,6 @@ const Styles = () => {
       .ticket-subtitle {
         color: #6b7280;
         margin: 0;
-      }
-
-      /* Ticket Form */
-      .ticket-form-container {
-        background: white;
-        border-radius: 16px;
-        padding: 2rem;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      }
-
-      .ticket-form {
-        max-width: 800px;
-      }
-
-      .form-section {
-        margin-bottom: 2.5rem;
-        padding-bottom: 2rem;
-        border-bottom: 1px solid #e5e7eb;
-      }
-
-      .form-section:last-child {
-        border-bottom: none;
-      }
-
-      .form-section h2 {
-        font-size: 1.25rem;
-        color: #1f2937;
-        margin: 0 0 1.5rem 0;
-      }
-
-      .form-group {
-        margin-bottom: 1.5rem;
-      }
-
-      .form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1.5rem;
-      }
-
-      .form-group label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 500;
-        color: #374151;
-        font-size: 0.875rem;
-      }
-
-      .form-group input,
-      .form-group select,
-      .form-group textarea {
-        width: 100%;
-        padding: 0.875rem 1rem;
-        border: 2px solid #e5e7eb;
-        border-radius: 8px;
-        font-size: 1rem;
-        transition: all 0.3s;
-      }
-
-      .form-group input:focus,
-      .form-group select:focus,
-      .form-group textarea:focus {
-        outline: none;
-        border-color: #4f46e5;
-        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
-      }
-
-      .form-group textarea {
-        resize: vertical;
-        min-height: 120px;
-      }
-
-      .priority-preview {
-        display: inline-block;
-        margin-top: 0.5rem;
-        padding: 0.25rem 0.75rem;
-        border-radius: 20px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        color: white;
-      }
-
-      .agent-display {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        padding: 0.875rem;
-        background: #f8fafc;
-        border-radius: 8px;
-        border: 1px solid #e5e7eb;
-      }
-
-      .agent-avatar {
-        width: 36px;
-        height: 36px;
-        background: linear-gradient(135deg, #4f46e5, #8b5cf6);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-weight: 600;
-      }
-
-      .agent-name {
-        font-weight: 500;
-        color: #374151;
-      }
-
-      /* Form Actions */
-      .form-actions {
-        display: flex;
-        justify-content: flex-end;
-        gap: 1rem;
-        margin-top: 2rem;
-        padding-top: 2rem;
-        border-top: 1px solid #e5e7eb;
-      }
-
-      .btn-cancel {
-        padding: 0.875rem 1.5rem;
-        background: white;
-        color: #374151;
-        border: 1px solid #e5e7eb;
-        border-radius: 8px;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.3s;
-      }
-
-      .btn-cancel:hover {
-        background: #f3f4f6;
-      }
-
-      .btn-submit {
-        padding: 0.875rem 1.5rem;
-        background: linear-gradient(135deg, #4f46e5, #6366f1);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s;
-      }
-
-      .btn-submit:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
-      }
-
-      .btn-submit:disabled {
-        opacity: 0.7;
-        cursor: not-allowed;
-      }
-
-      /* Loading */
-      .loading-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 400px;
-        gap: 1rem;
-      }
-
-      .loading-spinner {
-        width: 40px;
-        height: 40px;
-        border: 3px solid #e5e7eb;
-        border-top-color: #4f46e5;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-      }
-
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      .loading-container p {
-        color: #6b7280;
-      }
-
-      /* Responsive */
-      @media (max-width: 1024px) {
-        .ticket-detail-container {
-          flex-direction: column;
-        }
-        
-        .sidebar {
-          width: 100%;
-          flex-direction: row;
-          padding: 1rem;
-        }
-        
-        .sidebar-nav {
-          flex-direction: row;
-          flex: 0;
-        }
-        
-        .nav-item span:first-child {
-          font-size: 1.25rem;
-        }
-        
-        .nav-item span:last-child {
-          display: none;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .main-content {
-          padding: 1rem;
-        }
-        
-        .ticket-form-container {
-          padding: 1.5rem;
-        }
-        
-        .form-row {
-          grid-template-columns: 1fr;
-          gap: 0;
-        }
-        
-        .form-actions {
-          flex-direction: column;
-        }
-        
-        .btn-cancel,
-        .btn-submit {
-          width: 100%;
-        }
       }
     `}</style>
   );
