@@ -6,16 +6,11 @@ import Dashboard from './pages/Dashboard';
 import TicketList from './pages/TicketList';
 import TicketDetail from './pages/TicketDetail';
 import './index.css';
-
-// Navigation component that shows only when logged in
 const Navigation = ({ user, onLogout }) => {
   const location = useLocation();
-  
-  // Don't show navigation on landing or login pages
   if (location.pathname === '/' || location.pathname === '/login') {
     return null;
   }
-
   return (
     <nav className="main-nav">
       <div className="nav-container">
