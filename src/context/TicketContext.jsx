@@ -68,14 +68,11 @@ export const TicketProvider = ({ children }) => {
   const [notifications, setNotifications] = useState(3);
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Save tickets to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem('supportProTickets', JSON.stringify(tickets));
   }, [tickets]);
 
-  // Quick login function
   const login = (email, password) => {
-    // Accept any email/password for demo
     const userData = {
       name: email.split('@')[0] || 'User',
       email: email,
@@ -93,7 +90,6 @@ export const TicketProvider = ({ children }) => {
     localStorage.removeItem('supportProUser');
   };
 
-  // Add new ticket
   const addTicket = (ticketData) => {
     const newTicket = {
       id: `T${(tickets.length + 1).toString().padStart(3, '0')}`,
@@ -108,7 +104,6 @@ export const TicketProvider = ({ children }) => {
     return newTicket;
   };
 
-  // Update ticket
   const updateTicket = (id, updates) => {
     const updatedTickets = tickets.map(ticket => 
       ticket.id === id ? { ...ticket, ...updates } : ticket
@@ -116,18 +111,15 @@ export const TicketProvider = ({ children }) => {
     setTickets(updatedTickets);
   };
 
-  // Delete ticket
   const deleteTicket = (id) => {
     const updatedTickets = tickets.filter(ticket => ticket.id !== id);
     setTickets(updatedTickets);
   };
 
-  // Close ticket
   const closeTicket = (id) => {
     updateTicket(id, { status: 'Closed' });
   };
 
-  // Get ticket stats
   const stats = {
     total: tickets.length,
     open: tickets.filter(t => t.status === 'Open').length,
@@ -136,7 +128,6 @@ export const TicketProvider = ({ children }) => {
     highPriority: tickets.filter(t => t.priority === 'HIGH' || t.priority === 'CRITICAL').length
   };
 
-  // Filter tickets based on search
   const filteredTickets = tickets.filter(ticket => {
     const searchLower = searchTerm.toLowerCase();
     return (
