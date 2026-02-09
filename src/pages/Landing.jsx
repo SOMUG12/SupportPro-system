@@ -4,6 +4,7 @@ import '../index.css';
 const Landing = () => {
   return (
     <div className="landing-container">
+      {/* Navigation */}
       <nav className="landing-nav">
         <div className="nav-brand">
           <div className="logo">
@@ -19,6 +20,7 @@ const Landing = () => {
         </div>
       </nav>
 
+      {/* Hero Section - Updated without ticket preview */}
       <section className="hero-section">
         <div className="hero-content">
           <div className="hero-badge">
@@ -63,6 +65,7 @@ const Landing = () => {
           </div>
         </div>
         
+        {/* Visual element without ticket details */}
         <div className="hero-visual">
           <div className="visual-placeholder">
             <div className="visual-icon">💬</div>
@@ -72,6 +75,7 @@ const Landing = () => {
         </div>
       </section>
 
+      {/* Features Section */}
       <section id="features" className="features-section">
         <div className="section-header">
           <h2>Powerful Features for Modern Support Teams</h2>
@@ -111,6 +115,7 @@ const Landing = () => {
         </div>
       </section>
 
+      {/* Stats Section */}
       <section className="performance-section">
         <div className="performance-grid">
           <div className="performance-card">
@@ -227,6 +232,7 @@ const Styles = () => {
         background: rgba(255, 255, 255, 0.3);
       }
 
+      /* Hero Section - Updated */
       .hero-section {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -344,6 +350,184 @@ const Styles = () => {
         width: 1px;
         height: 40px;
         background: rgba(255, 255, 255, 0.3);
+      }
+
+      /* Hero Visual - Updated */
+      .hero-visual {
+        perspective: 1000px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .visual-placeholder {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 3rem;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+
+      .visual-icon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+      }
+
+      .visual-placeholder h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .visual-placeholder p {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      /* Features Section */
+      .features-section {
+        padding: 6rem 2rem;
+        background: white;
+        border-radius: 40px 40px 0 0;
+        margin-top: 4rem;
+      }
+
+      .section-header {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 4rem;
+      }
+
+      .section-header h2 {
+        font-size: 2.5rem;
+        color: #1f2937;
+        margin-bottom: 1rem;
+      }
+
+      .section-subtitle {
+        font-size: 1.125rem;
+        color: #6b7280;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .feature-card {
+        background: #f8fafc;
+        padding: 2rem;
+        border-radius: 16px;
+        text-align: center;
+        transition: all 0.3s;
+        border: 1px solid #e5e7eb;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        border-color: #c7d2fe;
+      }
+
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin: 0 auto 1.5rem;
+        color: white;
+      }
+
+      .feature-icon.ai {
+        background: linear-gradient(135deg, #10b981, #6366f1);
+      }
+
+      .feature-card h3 {
+        font-size: 1.5rem;
+        color: #1f2937;
+        margin-bottom: 1rem;
+      }
+
+      .feature-card p {
+        color: #6b7280;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+
+      .feature-link {
+        color: #6366f1;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      /* Performance Section */
+      .performance-section {
+        padding: 6rem 2rem;
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: white;
+      }
+
+      .performance-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .performance-card {
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .performance-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .performance-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .performance-label {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2.5rem;
+        }
+        
+        .hero-buttons {
+          flex-direction: column;
+        }
+        
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .performance-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
     `}</style>
   );
